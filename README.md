@@ -1,10 +1,10 @@
 # MyTaskApp
 Create and manage a ToDo list
 
---Newest updates--
-* Added MySql Parameters for queries
-* Added Remember me button that stores user and password (needs work to bypass login screen on load)
-* Updated localhost credentials to contain guest user for extra security
+--Newest updates (listed new to old)--
+* (2022-04-20) Added MySql Parameters for queries
+* (2022-04-20) Added Remember me button that stores user and password (needs work to bypass login screen on load)
+* (2022-04-20) Updated localhost credentials to contain guest user for extra security
 
 --Point of the project--
 
