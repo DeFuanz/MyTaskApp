@@ -34,6 +34,8 @@ While the project is very simplistic, I spent alot of time googling ways to do c
 
 Some things I would like to work on/learn in the future are as follows:
 
+* Add stored procedures for queries
+* Create "Boards" that show tasks in specific categories
 * Adding date picker to manipulate viewed tasks by the date they are due
 * Learn good practices for hashing passwords and implement it into account creation/login
 * Create a better UI than what is current
