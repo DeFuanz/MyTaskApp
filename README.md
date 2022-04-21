@@ -1,6 +1,11 @@
 # MyTaskApp
 Create and manage a ToDo list
 
+--Newest updates--
+* Added MySql Parameters for queries
+* Added Remember me button that stores user and password (needs work to bypass login screen on load)
+* Updated localhost credentials to contain guest user for extra security
+
 --Point of the project--
 
 This project was my first project after learning C# for the 2022 Spring summester. 
