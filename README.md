@@ -44,7 +44,7 @@ Some things I would like to work on/learn in the future are as follows:
 
 --If wanting to test/edit app yourself--
 
-Due to security, the connection string has been voided as it contained user and password locally. If setting up yourself, Please create a new database in MySql and 
+Due to security, The database is purely local for now. If setting up yourself, Please create a new database in MySql and 
 add the new connection string creditials in the AppConfig File. Database Schema is simple but is as follows:
 
 appusers -> userid(PK), username, password
