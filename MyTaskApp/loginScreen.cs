@@ -25,6 +25,12 @@ namespace MyTaskApp
         //Checks entered username and password against database to log user in
         private void button_login_Click(object sender, EventArgs e)
         {
+            if (checkBox_remember.Checked)
+            {
+                Properties.Settings.Default.userName = textBox_user.Text;
+                Properties.Settings.Default.passUser = textBox_pwd.Text;
+                Properties.Settings.Default.Save();
+            }
             //Checks if fields are empty
             if (textBox_user.Text == "" || textBox_pwd.Text == "")
             {
@@ -38,8 +44,9 @@ namespace MyTaskApp
                 {
                     conn.Open();
                     //selects username entered and checks to make sure the password matches
-                    string checkLogin = $"SELECT * FROM appusers WHERE username = '{ textBox_user.Text.Trim() }'";
+                    string checkLogin = $"SELECT * FROM appusers WHERE username = @Username";
                     MySqlCommand cmd = new MySqlCommand(checkLogin, conn);
+                    cmd.Parameters.AddWithValue("@Username", textBox_user.Text.ToString());
                     MySqlDataReader dr = cmd.ExecuteReader();
 
                     while (dr.Read())
@@ -47,7 +54,6 @@ namespace MyTaskApp
                         //logins in and shows users dashboard if correct
                         if (textBox_user.Text == dr[1].ToString() && textBox_pwd.Text == dr[2].ToString())
                         {   
-                            MessageBox.Show("Login Successful");
                             getUserData user = new getUserData();
                             getUserData.UserName = dr[1].ToString();
                             getUserData.UserID = Convert.ToInt32(dr[0].ToString());
@@ -76,6 +82,15 @@ namespace MyTaskApp
         {
             form_createAcc ca = new form_createAcc();
             ca.Show();
+        }
+
+        private void Form_login_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.userName != string.Empty)
+            {
+                textBox_user.Text = Properties.Settings.Default.userName;
+                textBox_pwd.Text = Properties.Settings.Default.passUser;
+            }
         }
     }
 }

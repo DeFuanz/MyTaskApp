@@ -38,6 +38,7 @@ namespace MyTaskApp
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox_remember = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,12 +126,23 @@ namespace MyTaskApp
             this.panel1.Size = new System.Drawing.Size(414, 454);
             this.panel1.TabIndex = 7;
             // 
+            // checkBox_remember
+            // 
+            this.checkBox_remember.AutoSize = true;
+            this.checkBox_remember.Location = new System.Drawing.Point(551, 201);
+            this.checkBox_remember.Name = "checkBox_remember";
+            this.checkBox_remember.Size = new System.Drawing.Size(95, 17);
+            this.checkBox_remember.TabIndex = 8;
+            this.checkBox_remember.Text = "Remember Me";
+            this.checkBox_remember.UseVisualStyleBackColor = true;
+            // 
             // Form_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBox_remember);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button_newacc);
@@ -144,6 +156,7 @@ namespace MyTaskApp
             this.Name = "Form_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginScreen";
+            this.Load += new System.EventHandler(this.Form_login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -161,6 +174,7 @@ namespace MyTaskApp
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox checkBox_remember;
     }
 }
 

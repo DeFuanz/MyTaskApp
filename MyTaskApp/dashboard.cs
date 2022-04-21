@@ -18,7 +18,7 @@ namespace MyTaskApp
             InitializeComponent();
             
         }
-
+        //Allows dashboard to be accessed in the newtask.cs file to refresh the dashboard after creating a new task
         public static DashBoard Dash;
 
 
@@ -32,13 +32,13 @@ namespace MyTaskApp
                 {
                     //Opens connection and loads all uncompleted tasks associated with the logged in user
                     conn.Open();
-                    MySqlCommand ldtask = new MySqlCommand($"SELECT task FROM tasks WHERE user_id = '{ getUserData.UserID }' AND completed = 0", conn);
+                    MySqlCommand ldtask = new MySqlCommand($"SELECT task FROM tasks WHERE user_id = @userid AND completed = 0", conn);
+                    ldtask.Parameters.AddWithValue("@userid", getUserData.UserID);
                     MySqlDataReader dr = ldtask.ExecuteReader();
 
                     while (dr.Read())
                     {
                         //Calls to remove and tasks and repopulates if new task added (refreshes dashboard)
-
                         string newItem = dr["task"].ToString();
                         checkedListBox1.Items.Remove(newItem);
                         checkedListBox1.Items.Add(newItem);
@@ -52,6 +52,7 @@ namespace MyTaskApp
             }
         }
 
+        //This method calls for the database to clear all tasks listed under the user logged in
         public void DeleteData()
         {
             try
@@ -59,7 +60,8 @@ namespace MyTaskApp
                 using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
                 {
                     conn.Open();
-                    MySqlCommand dltask = new MySqlCommand($"DELETE FROM tasks WHERE user_id = '{getUserData.UserID}'",conn);
+                    MySqlCommand dltask = new MySqlCommand($"DELETE FROM tasks WHERE user_id = @userid",conn);
+                    dltask.Parameters.AddWithValue("@userid", getUserData.UserID);
                     dltask.ExecuteNonQuery();
                     checkedListBox1.Items.Clear();
                 }
@@ -79,7 +81,6 @@ namespace MyTaskApp
                 this.Hide();
                 Form_login fl = new Form_login();
                 fl.Show();
-                MessageBox.Show("Logout successful");
             }
         }
 
@@ -98,6 +99,7 @@ namespace MyTaskApp
             nt.Show();
         }
 
+        //This button uses DeleteData() to clear all the tasks from the database
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure you want to clear all tasks?", "Alert", MessageBoxButtons.YesNo);
@@ -111,6 +113,8 @@ namespace MyTaskApp
             }
         }
 
+        //This button allows the user to update the task to completed on all selected tasks
+        //Then calls a refresh to the checkbox to get updated uncompleted tasks. 
         private void button3_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
@@ -120,7 +124,8 @@ namespace MyTaskApp
                     using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
                     {
                         conn.Open();
-                        MySqlCommand fintask = new MySqlCommand($"UPDATE tasks SET completed = 1 WHERE task = '{checkedListBox1.CheckedItems[i]}'", conn);
+                        MySqlCommand fintask = new MySqlCommand($"UPDATE tasks SET completed = 1 WHERE task = @checked", conn);
+                        fintask.Parameters.AddWithValue("@checked", checkedListBox1.CheckedItems[i]);
                         fintask.ExecuteNonQuery();
                     }
                 }

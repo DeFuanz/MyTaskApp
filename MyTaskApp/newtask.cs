@@ -19,7 +19,9 @@ namespace MyTaskApp
                 using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
                 {
                     conn.Open();
-                    MySqlCommand addtask = new MySqlCommand($"INSERT INTO tasks (user_id, task, completed) VALUES ({ getUserData.UserID }, '{ textBox_newtask.Text }', 0)", conn);
+                    MySqlCommand addtask = new MySqlCommand($"INSERT INTO tasks (user_id, task, completed) VALUES (@userid, @task, 0)", conn);
+                    addtask.Parameters.AddWithValue(@"userid", getUserData.UserID);
+                    addtask.Parameters.AddWithValue("@task", textBox_newtask.Text);
                     addtask.ExecuteNonQuery();
                     this.Hide();
                 }
