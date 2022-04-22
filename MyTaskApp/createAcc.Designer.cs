@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button_closeapp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_newuser
@@ -88,7 +89,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Broadway", 40F);
             this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label3.Location = new System.Drawing.Point(58, 9);
+            this.label3.Location = new System.Drawing.Point(60, 41);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(287, 61);
             this.label3.TabIndex = 5;
@@ -98,18 +99,32 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(143, 70);
+            this.label4.Location = new System.Drawing.Point(145, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 18);
             this.label4.TabIndex = 6;
             this.label4.Text = "New Accounts";
+            // 
+            // button_closeapp
+            // 
+            this.button_closeapp.FlatAppearance.BorderSize = 0;
+            this.button_closeapp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_closeapp.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_closeapp.Location = new System.Drawing.Point(351, 9);
+            this.button_closeapp.Name = "button_closeapp";
+            this.button_closeapp.Size = new System.Drawing.Size(30, 29);
+            this.button_closeapp.TabIndex = 10;
+            this.button_closeapp.Text = "X";
+            this.button_closeapp.UseVisualStyleBackColor = true;
+            this.button_closeapp.Click += new System.EventHandler(this.button_closeapp_Click);
             // 
             // form_createAcc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(393, 450);
+            this.ClientSize = new System.Drawing.Size(393, 358);
+            this.Controls.Add(this.button_closeapp);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -117,7 +132,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_newpwd);
             this.Controls.Add(this.textBox_newuser);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(393, 358);
+            this.MinimumSize = new System.Drawing.Size(393, 358);
             this.Name = "form_createAcc";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "createAcc";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -133,5 +152,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button_closeapp;
     }
 }

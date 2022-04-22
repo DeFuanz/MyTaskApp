@@ -92,5 +92,10 @@ namespace MyTaskApp
                 textBox_pwd.Text = Properties.Settings.Default.passUser;
             }
         }
+
+        private void button_closeapp_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

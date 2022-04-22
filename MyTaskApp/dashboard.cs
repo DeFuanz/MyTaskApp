@@ -88,6 +88,7 @@ namespace MyTaskApp
         private void dashboard_Load(object sender, EventArgs e)
         {
             userlabel.Text = getUserData.UserName;
+            label_date.Text = DateTime.Now.ToString("dddd , MMM dd yyyy");
             Load_Data();
             Dash = this;
     }
@@ -136,6 +137,19 @@ namespace MyTaskApp
             }
             checkedListBox1.Items.Clear();
             Load_Data();
+        }
+
+        //loads the dashboard on button click
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panel_tasks.Hide();
+            panel_home.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            panel_home.Hide();
+            panel_tasks.Show();
         }
     }
 }

@@ -39,18 +39,21 @@ namespace MyTaskApp
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox_remember = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button_closeapp = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Font = new System.Drawing.Font("Broadway", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.label1.Font = new System.Drawing.Font("Bauhaus 93", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(28, 106);
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Location = new System.Drawing.Point(3, 159);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(348, 72);
+            this.label1.Size = new System.Drawing.Size(345, 91);
             this.label1.TabIndex = 0;
             this.label1.Text = "TaskApp";
             // 
@@ -73,9 +76,10 @@ namespace MyTaskApp
             // 
             // button_login
             // 
-            this.button_login.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button_login.BackColor = System.Drawing.Color.White;
+            this.button_login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
             this.button_login.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_login.Font = new System.Drawing.Font("Broadway", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_login.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_login.Location = new System.Drawing.Point(481, 224);
             this.button_login.Name = "button_login";
             this.button_login.Size = new System.Drawing.Size(237, 35);
@@ -86,7 +90,8 @@ namespace MyTaskApp
             // 
             // button_newacc
             // 
-            this.button_newacc.Font = new System.Drawing.Font("Broadway", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_newacc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_newacc.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_newacc.Location = new System.Drawing.Point(481, 288);
             this.button_newacc.Name = "button_newacc";
             this.button_newacc.Size = new System.Drawing.Size(237, 35);
@@ -117,9 +122,9 @@ namespace MyTaskApp
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-3, -1);
             this.panel1.Name = "panel1";
@@ -136,12 +141,35 @@ namespace MyTaskApp
             this.checkBox_remember.Text = "Remember Me";
             this.checkBox_remember.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel2.Location = new System.Drawing.Point(337, 178);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(74, 73);
+            this.panel2.TabIndex = 1;
+            // 
+            // button_closeapp
+            // 
+            this.button_closeapp.FlatAppearance.BorderSize = 0;
+            this.button_closeapp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_closeapp.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_closeapp.Location = new System.Drawing.Point(774, 12);
+            this.button_closeapp.Name = "button_closeapp";
+            this.button_closeapp.Size = new System.Drawing.Size(30, 29);
+            this.button_closeapp.TabIndex = 9;
+            this.button_closeapp.Text = "X";
+            this.button_closeapp.UseVisualStyleBackColor = true;
+            this.button_closeapp.Click += new System.EventHandler(this.button_closeapp_Click);
+            // 
             // Form_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(816, 450);
+            this.Controls.Add(this.button_closeapp);
             this.Controls.Add(this.checkBox_remember);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -150,9 +178,10 @@ namespace MyTaskApp
             this.Controls.Add(this.textBox_pwd);
             this.Controls.Add(this.textBox_user);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(816, 489);
-            this.MinimumSize = new System.Drawing.Size(816, 489);
+            this.MaximumSize = new System.Drawing.Size(816, 450);
+            this.MinimumSize = new System.Drawing.Size(816, 450);
             this.Name = "Form_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginScreen";
@@ -175,6 +204,8 @@ namespace MyTaskApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox checkBox_remember;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button_closeapp;
     }
 }
 

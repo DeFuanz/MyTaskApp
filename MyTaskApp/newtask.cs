@@ -32,5 +32,10 @@ namespace MyTaskApp
             }
             DashBoard.Dash.Load_Data();
         }
+
+        private void button_closeapp_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

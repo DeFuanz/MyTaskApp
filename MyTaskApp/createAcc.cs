@@ -74,5 +74,10 @@ namespace MyTaskApp
                 return;
             }
         }
+
+        private void button_closeapp_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
