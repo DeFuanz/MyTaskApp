@@ -1,6 +1,11 @@
 # MyTaskApp
 Create and manage a ToDo list
 
+--Newest updates (listed new to old)--
+* (2022-04-20) Added MySql Parameters for queries
+* (2022-04-20) Added Remember me button that stores user and password (needs work to bypass login screen on load)
+* (2022-04-20) Updated localhost credentials to contain guest user for extra security
+
 --Point of the project--
 
 This project was my first project after learning C# for the 2022 Spring summester. 
@@ -13,8 +18,9 @@ When either or is done, The system stores the user and password (be advised pass
 
 --Images of the program--
 
-![taskapplogin](https://user-images.githubusercontent.com/76855046/164012062-0daf46d9-6bcb-4b39-8cb7-58027b280265.png)
-![image](https://user-images.githubusercontent.com/76855046/164012580-a5954c47-4a07-49da-85eb-53d9cd60978b.png)
+![image](https://user-images.githubusercontent.com/76855046/164543118-6471bf23-2ab3-48a0-b709-18f09f16dc7c.png)
+![image](https://user-images.githubusercontent.com/76855046/164543412-f1b91574-be90-4a9f-9c7b-f97f57124df6.png)
+
 
 --Things I Learned--
 
@@ -29,6 +35,7 @@ While the project is very simplistic, I spent alot of time googling ways to do c
 
 Some things I would like to work on/learn in the future are as follows:
 
+* Create "Boards" that show tasks in specific categories
 * Adding date picker to manipulate viewed tasks by the date they are due
 * Learn good practices for hashing passwords and implement it into account creation/login
 * Create a better UI than what is current
@@ -36,7 +43,7 @@ Some things I would like to work on/learn in the future are as follows:
 
 --If wanting to test/edit app yourself--
 
-Due to security, the connection string has been voided as it contained user and password locally. If setting up yourself, Please create a new database in MySql and 
+Due to security, The database is purely local for now. If setting up yourself, Please create a new database in MySql and 
 add the new connection string creditials in the AppConfig File. Database Schema is simple but is as follows:
 
 appusers -> userid(PK), username, password
