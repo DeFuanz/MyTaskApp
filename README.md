@@ -2,6 +2,7 @@
 Create and manage a ToDo list
 
 --Newest updates (listed new to old)--
+* (2022-04-22) Update to a Modern UI
 * (2022-04-20) Added MySql Parameters for queries
 * (2022-04-20) Added Remember me button that stores user and password (needs work to bypass login screen on load)
 * (2022-04-20) Updated localhost credentials to contain guest user for extra security
@@ -18,8 +19,12 @@ When either or is done, The system stores the user and password (be advised pass
 
 --Images of the program--
 
-![image](https://user-images.githubusercontent.com/76855046/164543118-6471bf23-2ab3-48a0-b709-18f09f16dc7c.png)
-![image](https://user-images.githubusercontent.com/76855046/164543412-f1b91574-be90-4a9f-9c7b-f97f57124df6.png)
+![image](https://user-images.githubusercontent.com/76855046/164760398-dff8a441-18e0-4336-a257-6e0526449c28.png)
+![image](https://user-images.githubusercontent.com/76855046/164760532-90ae4177-c176-4730-aca7-4feebf191b4d.png)
+![image](https://user-images.githubusercontent.com/76855046/164760855-1b68f1a5-d083-4e31-ac8b-7b00d9604425.png)
+
+
+
 
 
 --Things I Learned--
