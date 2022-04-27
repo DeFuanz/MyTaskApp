@@ -2,6 +2,7 @@
 Create and manage a ToDo list
 
 --Newest updates (listed new to old)--
+* (2022-04-27) Reworked code structure to seperate Business app layer from UI layer as much as possible
 * (2022-04-22) Update to a Modern UI
 * (2022-04-20) Added MySql Parameters for queries
 * (2022-04-20) Added Remember me button that stores user and password (needs work to bypass login screen on load)
