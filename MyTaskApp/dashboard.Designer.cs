@@ -46,10 +46,10 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button_logout = new System.Windows.Forms.Button();
             this.panel_tasks = new System.Windows.Forms.Panel();
+            this.textBox_addtask = new System.Windows.Forms.TextBox();
             this.panel_home = new System.Windows.Forms.Panel();
             this.label_date = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox_addtask = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.taskappDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tasksBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -236,6 +236,14 @@
             this.panel_tasks.Size = new System.Drawing.Size(570, 446);
             this.panel_tasks.TabIndex = 10;
             // 
+            // textBox_addtask
+            // 
+            this.textBox_addtask.Location = new System.Drawing.Point(35, 401);
+            this.textBox_addtask.Multiline = true;
+            this.textBox_addtask.Name = "textBox_addtask";
+            this.textBox_addtask.Size = new System.Drawing.Size(122, 42);
+            this.textBox_addtask.TabIndex = 8;
+            // 
             // panel_home
             // 
             this.panel_home.Controls.Add(this.label_date);
@@ -271,14 +279,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Today Is";
             // 
-            // textBox_addtask
-            // 
-            this.textBox_addtask.Location = new System.Drawing.Point(35, 401);
-            this.textBox_addtask.Multiline = true;
-            this.textBox_addtask.Name = "textBox_addtask";
-            this.textBox_addtask.Size = new System.Drawing.Size(122, 42);
-            this.textBox_addtask.TabIndex = 8;
-            // 
             // DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,8 +287,8 @@
             this.ClientSize = new System.Drawing.Size(816, 495);
             this.Controls.Add(this.button_logout);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel_tasks);
             this.Controls.Add(this.panel_home);
+            this.Controls.Add(this.panel_tasks);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(816, 495);
