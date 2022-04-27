@@ -69,7 +69,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Add New Task";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -82,7 +82,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Clear All Tasks";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label2
             // 
@@ -133,7 +133,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "Mark As Completed";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // panel2
             // 
@@ -170,7 +170,7 @@
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // button4
             // 
@@ -187,7 +187,7 @@
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // label1
             // 
@@ -222,7 +222,7 @@
             this.button_logout.TabIndex = 4;
             this.button_logout.Text = "Logout";
             this.button_logout.UseVisualStyleBackColor = false;
-            this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
+            this.button_logout.Click += new System.EventHandler(this.Button_logout_Click);
             // 
             // panel_tasks
             // 
@@ -296,7 +296,7 @@
             this.Name = "DashBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dashboard";
-            this.Load += new System.EventHandler(this.dashboard_Load);
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.taskappDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tasksBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);

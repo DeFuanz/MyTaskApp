@@ -7,16 +7,16 @@ using System.Windows;
 
 namespace MyTaskApp
 {
-    //This file contains the logical side that munipulates queries and produces results for the UI
+    //This file contains the methods that will be called in the UI to connect/manipulate dataqueries when called
     public class BridgeData
     {
-        DbQueries dq = new DbQueries();
+        readonly DbQueries dq = new DbQueries();
 
         public int VerifyLogin(string enteredUser, string enteredPass)
         {
             if (enteredUser == "" || enteredPass == "")
             {
-                
+
                 return 0;
             }
             else
@@ -55,6 +55,17 @@ namespace MyTaskApp
             }
         }
 
+        public List<string> PopulateTasks(int userid)
+        {
+            dq.LoadTasks(userid);
+            List<string> tasks = new List<string>();
+            foreach (string tsk in dq.tasks)
+            {
+                tasks.Add(tsk);
+            }
+            return tasks;
+        }
+
         public int SubmitTask(string task)
         {
             if (task == "")
@@ -68,5 +79,19 @@ namespace MyTaskApp
                 return 1;
             }
         }
+
+        public void ClearTasks(int userid)
+        {
+            dq.DeleteTasks(userid);
+            dq.tasks.Clear();
+            PopulateTasks(userid);
+        }
+
+        public void MarkCompleteTask(string selectedtask)
+        {
+            dq.tasks.Remove(selectedtask);
+            dq.UpdateTaskComp(selectedtask);
+        }
     }
 }
+

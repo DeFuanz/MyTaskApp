@@ -9,6 +9,7 @@ namespace MyTaskApp
 {
     public class DbQueries
     {
+        public List<string> tasks = new List<string>();
         //Fetches login information and stores user data such as name/ID for later use.
         public void LoginQuery(string user)
         {
@@ -25,7 +26,7 @@ namespace MyTaskApp
 
                     while (dr.Read())
                     {
-                        
+
                         getUserData.UserName = dr[1].ToString();
                         getUserData.Password = dr[2].ToString();
                         getUserData.UserID = Convert.ToInt32(dr[0].ToString());
@@ -81,6 +82,31 @@ namespace MyTaskApp
             }
         }
 
+        public void LoadTasks(int userid)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
+                {
+                    //Opens connection and loads all uncompleted tasks associated with the logged in user
+                    conn.Open();
+                    MySqlCommand ldtask = new MySqlCommand($"SELECT task FROM tasks WHERE user_id = @userid AND completed = 0", conn);
+                    ldtask.Parameters.AddWithValue("@userid", userid);
+                    MySqlDataReader dr = ldtask.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        string taskItem = dr["task"].ToString();
+                        tasks.Remove(taskItem);
+                        tasks.Add(taskItem);
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         public void InsertTask(string task)
         {
             try
@@ -92,6 +118,42 @@ namespace MyTaskApp
                     addtask.Parameters.AddWithValue(@"userid", getUserData.UserID);
                     addtask.Parameters.AddWithValue("@task", task);
                     addtask.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public void DeleteTasks(int userid)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
+                {
+                    conn.Open();
+                    MySqlCommand dltask = new MySqlCommand($"DELETE FROM tasks WHERE user_id = @userid", conn);
+                    dltask.Parameters.AddWithValue("@userid", userid);
+                    dltask.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public void UpdateTaskComp(string selectedtask)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
+                {
+
+                    conn.Open();
+                    MySqlCommand fintask = new MySqlCommand($"UPDATE tasks SET completed = 1 WHERE task = @checked", conn);
+                    fintask.Parameters.AddWithValue("@checked", selectedtask);
+                    fintask.ExecuteNonQuery();
+
                 }
             }
             catch (Exception)

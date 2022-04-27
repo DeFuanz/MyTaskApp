@@ -16,65 +16,13 @@ namespace MyTaskApp
         public DashBoard()
         {
             InitializeComponent();
-            
+
         }
-        //Allows dashboard to be accessed in the newtask.cs file to refresh the dashboard after creating a new task
-        public static DashBoard Dash;
-        BridgeData bd = new BridgeData();
+        //Allows calling of data bridging methods
+        public BridgeData bd = new BridgeData();
 
-
-  
-        //Loads the user dashboard with custom info such as tasks, username, etc
-        public void Load_Data()
-        {
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
-                {
-                    //Opens connection and loads all uncompleted tasks associated with the logged in user
-                    conn.Open();
-                    MySqlCommand ldtask = new MySqlCommand($"SELECT task FROM tasks WHERE user_id = @userid AND completed = 0", conn);
-                    ldtask.Parameters.AddWithValue("@userid", getUserData.UserID);
-                    MySqlDataReader dr = ldtask.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        //Calls to remove and tasks and repopulates if new task added (refreshes dashboard)
-                        string newItem = dr["task"].ToString();
-                        checkedListBox1.Items.Remove(newItem);
-                        checkedListBox1.Items.Add(newItem);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        //This method calls for the database to clear all tasks listed under the user logged in
-        public void DeleteData()
-        {
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
-                {
-                    conn.Open();
-                    MySqlCommand dltask = new MySqlCommand($"DELETE FROM tasks WHERE user_id = @userid",conn);
-                    dltask.Parameters.AddWithValue("@userid", getUserData.UserID);
-                    dltask.ExecuteNonQuery();
-                    checkedListBox1.Items.Clear();
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        //Logs the user out
-        private void button_logout_Click(object sender, EventArgs e)
+        //Logs the user out and confirms
+        private void Button_logout_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -85,33 +33,38 @@ namespace MyTaskApp
             }
         }
 
-        //loads the tasks and user data after logging in
-        private void dashboard_Load(object sender, EventArgs e)
+        //loads all dashboard information after login
+        private void Dashboard_Load(object sender, EventArgs e)
         {
             userlabel.Text = getUserData.UserName;
             label_date.Text = DateTime.Now.ToString("dddd , MMM dd yyyy");
-            Load_Data();
-            Dash = this;
-    }
+            checkedListBox1.DataSource = bd.PopulateTasks(getUserData.UserID);
+        }
 
-        //Creates a new task
-        private void button1_Click(object sender, EventArgs e)
+        //Creates a new task and refreshes the datasource
+        private void Button1_Click(object sender, EventArgs e)
         {
             if (bd.SubmitTask(textBox_addtask.Text) == 1)
             {
                 textBox_addtask.Clear();
-                MessageBox.Show("Task Added");
-                //Add load data here
+                checkedListBox1.DataSource = null;
+                checkedListBox1.DataSource = bd.PopulateTasks(getUserData.UserID);
+            }
+            else
+            {
+                MessageBox.Show("Please enter a task");
             }
         }
 
-        //This button uses DeleteData() to clear all the tasks from the database
-        private void button2_Click(object sender, EventArgs e)
+        //Deletes all of the tasks from the users profile and refreshes datasource
+        private void Button2_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure you want to clear all tasks?", "Alert", MessageBoxButtons.YesNo);
             if (DialogResult.Yes == dr)
             {
-                DeleteData();
+                bd.ClearTasks(getUserData.UserID);
+                checkedListBox1.DataSource = null;
+                checkedListBox1.DataSource = bd.PopulateTasks(getUserData.UserID);
             }
             else
             {
@@ -119,39 +72,27 @@ namespace MyTaskApp
             }
         }
 
-        //This button allows the user to update the task to completed on all selected tasks
-        //Then calls a refresh to the checkbox to get updated uncompleted tasks. 
-        private void button3_Click(object sender, EventArgs e)
+        //Marks selected tasks as completed and refreshes the shown tasks
+        private void Button3_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
             {
-                try
-                {
-                    using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
-                    {
-                        conn.Open();
-                        MySqlCommand fintask = new MySqlCommand($"UPDATE tasks SET completed = 1 WHERE task = @checked", conn);
-                        fintask.Parameters.AddWithValue("@checked", checkedListBox1.CheckedItems[i]);
-                        fintask.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);    
-                }
+                string checkedtask = checkedListBox1.CheckedItems[i].ToString(); //Thinking of passing checked items as string to bridge layer instead of here
+                bd.MarkCompleteTask(checkedtask);
             }
-            checkedListBox1.Items.Clear();
-            Load_Data();
+            checkedListBox1.DataSource = null;
+            checkedListBox1.DataSource = bd.PopulateTasks(getUserData.UserID);
         }
 
-        //loads the dashboard on button click
-        private void button4_Click(object sender, EventArgs e)
+        //loads the dashboard welcome on button click
+        private void Button4_Click(object sender, EventArgs e)
         {
             panel_tasks.Hide();
             panel_home.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        //Loads the tasksmanagement tab on button click
+        private void Button5_Click(object sender, EventArgs e)
         {
             panel_home.Hide();
             panel_tasks.Show();
