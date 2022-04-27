@@ -49,6 +49,7 @@
             this.panel_home = new System.Windows.Forms.Panel();
             this.label_date = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBox_addtask = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.taskappDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tasksBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -62,9 +63,9 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(25, 401);
+            this.button1.Location = new System.Drawing.Point(163, 401);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 42);
+            this.button1.Size = new System.Drawing.Size(83, 42);
             this.button1.TabIndex = 2;
             this.button1.Text = "Add New Task";
             this.button1.UseVisualStyleBackColor = false;
@@ -75,9 +76,9 @@
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(394, 401);
+            this.button2.Location = new System.Drawing.Point(433, 401);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 42);
+            this.button2.Size = new System.Drawing.Size(116, 42);
             this.button2.TabIndex = 3;
             this.button2.Text = "Clear All Tasks";
             this.button2.UseVisualStyleBackColor = false;
@@ -126,9 +127,9 @@
             // 
             this.button3.BackColor = System.Drawing.Color.White;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(156, 401);
+            this.button3.Location = new System.Drawing.Point(320, 401);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(134, 42);
+            this.button3.Size = new System.Drawing.Size(107, 42);
             this.button3.TabIndex = 7;
             this.button3.Text = "Mark As Completed";
             this.button3.UseVisualStyleBackColor = false;
@@ -225,6 +226,7 @@
             // 
             // panel_tasks
             // 
+            this.panel_tasks.Controls.Add(this.textBox_addtask);
             this.panel_tasks.Controls.Add(this.checkedListBox1);
             this.panel_tasks.Controls.Add(this.button1);
             this.panel_tasks.Controls.Add(this.button3);
@@ -269,6 +271,14 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Today Is";
             // 
+            // textBox_addtask
+            // 
+            this.textBox_addtask.Location = new System.Drawing.Point(35, 401);
+            this.textBox_addtask.Multiline = true;
+            this.textBox_addtask.Name = "textBox_addtask";
+            this.textBox_addtask.Size = new System.Drawing.Size(122, 42);
+            this.textBox_addtask.TabIndex = 8;
+            // 
             // DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,8 +287,8 @@
             this.ClientSize = new System.Drawing.Size(816, 495);
             this.Controls.Add(this.button_logout);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_tasks);
+            this.Controls.Add(this.panel_home);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(816, 495);
@@ -293,6 +303,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel_tasks.ResumeLayout(false);
+            this.panel_tasks.PerformLayout();
             this.panel_home.ResumeLayout(false);
             this.panel_home.PerformLayout();
             this.ResumeLayout(false);
@@ -319,5 +330,6 @@
         private System.Windows.Forms.Panel panel_home;
         private System.Windows.Forms.Label label_date;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_addtask;
     }
 }

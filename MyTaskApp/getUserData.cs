@@ -11,6 +11,7 @@ namespace MyTaskApp
     {
         private static string un;
         private static int uid;
+        private static string pwd;
 
         public static string UserName
         {
@@ -22,6 +23,34 @@ namespace MyTaskApp
         {
             get { return uid; }
             set { uid = value; }
+        }
+
+        public static string Password
+        {
+            get { return pwd; }
+            set { pwd = value; }
+        }
+    }
+
+    //This class contains a 0/1 depending on if the sql query shows the username already exists or not
+    class checkNewAccData
+    {
+        private static int UE;
+
+        public static int UserExists
+        {
+            get { return UE; }
+            set { UE = value; }
+        }
+    }
+
+    class grabTask
+    {
+        private static string tsk;
+        public static string TaskItem
+        {
+            get { return tsk; }
+            set { tsk = value; }
         }
     }
 }

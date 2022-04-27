@@ -23,7 +23,6 @@ namespace MyTaskApp
                     addtask.Parameters.AddWithValue(@"userid", getUserData.UserID);
                     addtask.Parameters.AddWithValue("@task", textBox_newtask.Text);
                     addtask.ExecuteNonQuery();
-                    this.Hide();
                 }
             }
             catch (Exception ex)

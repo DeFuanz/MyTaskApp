@@ -20,6 +20,7 @@ namespace MyTaskApp
         }
         //Allows dashboard to be accessed in the newtask.cs file to refresh the dashboard after creating a new task
         public static DashBoard Dash;
+        BridgeData bd = new BridgeData();
 
 
   
@@ -96,8 +97,12 @@ namespace MyTaskApp
         //Creates a new task
         private void button1_Click(object sender, EventArgs e)
         {
-            newtask nt = new newtask();
-            nt.Show();
+            if (bd.SubmitTask(textBox_addtask.Text) == 1)
+            {
+                textBox_addtask.Clear();
+                MessageBox.Show("Task Added");
+                //Add load data here
+            }
         }
 
         //This button uses DeleteData() to clear all the tasks from the database

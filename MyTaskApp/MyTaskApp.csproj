@@ -125,6 +125,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BridgeData.cs" />
     <Compile Include="createAcc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +138,7 @@
     <Compile Include="dashboard.Designer.cs">
       <DependentUpon>dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DbQueries.cs" />
     <Compile Include="getUserData.cs" />
     <Compile Include="helpconn.cs" />
     <Compile Include="loginScreen.cs">

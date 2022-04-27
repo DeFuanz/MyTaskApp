@@ -21,6 +21,7 @@ namespace MyTaskApp
             InitializeComponent();
         }
 
+        BridgeData bd = new BridgeData();
         
         //Checks entered username and password against database to log user in
         private void button_login_Click(object sender, EventArgs e)
@@ -31,49 +32,16 @@ namespace MyTaskApp
                 Properties.Settings.Default.passUser = textBox_pwd.Text;
                 Properties.Settings.Default.Save();
             }
-            //Checks if fields are empty
-            if (textBox_user.Text == "" || textBox_pwd.Text == "")
+            
+            if (bd.VerifyLogin(textBox_user.Text, textBox_pwd.Text) == 1)
             {
-                MessageBox.Show("Please enter a vlid username and password");
-                return;
+                this.Hide();
+                DashBoard db = new DashBoard();
+                db.Show();
             }
-            try
+            else
             {
-                //Creates a connection via the helpconn class that grabs the connection string from app config file
-                using (MySqlConnection conn = new MySqlConnection(helpconn.conVal("taskdb")))
-                {
-                    conn.Open();
-                    //selects username entered and checks to make sure the password matches
-                    string checkLogin = $"SELECT * FROM appusers WHERE username = @Username";
-                    MySqlCommand cmd = new MySqlCommand(checkLogin, conn);
-                    cmd.Parameters.AddWithValue("@Username", textBox_user.Text.ToString());
-                    MySqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        //logins in and shows users dashboard if correct
-                        if (textBox_user.Text == dr[1].ToString() && textBox_pwd.Text == dr[2].ToString())
-                        {   
-                            getUserData user = new getUserData();
-                            getUserData.UserName = dr[1].ToString();
-                            getUserData.UserID = Convert.ToInt32(dr[0].ToString());
-                            this.Hide();
-                            DashBoard db = new DashBoard();
-                            db.Show();
-                            DashBoard.Dash.Load_Data();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid Login. Please Try Again");
-                            return;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                //Flags catch if error reaching the database
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Invalid Login");
             }
         }
 
