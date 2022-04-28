@@ -2,6 +2,7 @@
 Create and manage a ToDo list
 
 --Newest updates (listed new to old)--
+* (2022-04-27) Made Minor UI changes to selected tasks and dashboard
 * (2022-04-27) Add task is now apart of dashboard instead of seperate window
 * (2022-04-27) Reworked code structure to seperate Business app layer from UI layer as much as possible
 * (2022-04-22) Update to a Modern UI
@@ -22,21 +23,8 @@ When either or is done, The system stores the user and password (be advised pass
 --Images of the program--
 
 ![image](https://user-images.githubusercontent.com/76855046/164760398-dff8a441-18e0-4336-a257-6e0526449c28.png)
-![image](https://user-images.githubusercontent.com/76855046/164760532-90ae4177-c176-4730-aca7-4feebf191b4d.png)
-![image](https://user-images.githubusercontent.com/76855046/164760855-1b68f1a5-d083-4e31-ac8b-7b00d9604425.png)
-
-
-
-
-
---Things I Learned--
-
-While the project is very simplistic, I spent alot of time googling ways to do certain things and learned alot of new programming methods. Some of the more notable as listed below.
-
-* Better understanding of using get/set for storing and accesing private variables to use throughout
-* Learned using() as best practice to close connection automatically after database use
-* Storing connection string in AppConfig and creating a helper string. Allowed only one edit of string should db change/update
-* Learned on MySql methods in c# to use when updating, inserting, deleteing, or reading. 
+![image](https://user-images.githubusercontent.com/76855046/165661935-3c7149d7-19dc-4927-b023-e0eb0e56fb08.png)
+![image](https://user-images.githubusercontent.com/76855046/165662009-24ec6a34-7392-4708-a211-9fcc3617a012.png)
 
 --Future Additions--
 
