@@ -39,6 +39,7 @@ namespace MyTaskApp
             userlabel.Text = getUserData.UserName;
             label_date.Text = DateTime.Now.ToString("dddd , MMM dd yyyy");
             checkedListBox1.DataSource = bd.PopulateTasks(getUserData.UserID);
+            listBox_daystasks.DataSource = bd.PopulateTasks(getUserData.UserID);
         }
 
         //Creates a new task and refreshes the datasource
@@ -49,6 +50,8 @@ namespace MyTaskApp
                 textBox_addtask.Clear();
                 checkedListBox1.DataSource = null;
                 checkedListBox1.DataSource = bd.PopulateTasks(getUserData.UserID);
+                listBox_daystasks.DataSource = null;
+                listBox_daystasks.DataSource = bd.PopulateTasks(getUserData.UserID);
             }
             else
             {
@@ -65,6 +68,8 @@ namespace MyTaskApp
                 bd.ClearTasks(getUserData.UserID);
                 checkedListBox1.DataSource = null;
                 checkedListBox1.DataSource = bd.PopulateTasks(getUserData.UserID);
+                listBox_daystasks.DataSource = null;
+                listBox_daystasks.DataSource = bd.PopulateTasks(getUserData.UserID);
             }
             else
             {
@@ -82,6 +87,8 @@ namespace MyTaskApp
             }
             checkedListBox1.DataSource = null;
             checkedListBox1.DataSource = bd.PopulateTasks(getUserData.UserID);
+            listBox_daystasks.DataSource = null;
+            listBox_daystasks.DataSource = bd.PopulateTasks(getUserData.UserID);
         }
 
         //loads the dashboard welcome on button click
@@ -96,6 +103,16 @@ namespace MyTaskApp
         {
             panel_home.Hide();
             panel_tasks.Show();
+        }
+
+        private void listBox_daystasks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox_daystasks.ClearSelected();
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkedListBox1.ClearSelected();
         }
     }
 }

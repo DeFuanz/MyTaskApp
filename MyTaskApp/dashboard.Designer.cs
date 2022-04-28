@@ -48,6 +48,8 @@
             this.panel_tasks = new System.Windows.Forms.Panel();
             this.textBox_addtask = new System.Windows.Forms.TextBox();
             this.panel_home = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.listBox_daystasks = new System.Windows.Forms.ListBox();
             this.label_date = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.taskappDataSet)).BeginInit();
@@ -211,6 +213,7 @@
             this.checkedListBox1.Size = new System.Drawing.Size(504, 357);
             this.checkedListBox1.TabIndex = 1;
             this.checkedListBox1.ThreeDCheckBoxes = true;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // button_logout
             // 
@@ -246,6 +249,8 @@
             // 
             // panel_home
             // 
+            this.panel_home.Controls.Add(this.label4);
+            this.panel_home.Controls.Add(this.listBox_daystasks);
             this.panel_home.Controls.Add(this.label_date);
             this.panel_home.Controls.Add(this.label3);
             this.panel_home.Controls.Add(this.label2);
@@ -254,6 +259,27 @@
             this.panel_home.Name = "panel_home";
             this.panel_home.Size = new System.Drawing.Size(570, 446);
             this.panel_home.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(31, 155);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(183, 21);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Your Current Tasks Are:";
+            // 
+            // listBox_daystasks
+            // 
+            this.listBox_daystasks.FormattingEnabled = true;
+            this.listBox_daystasks.Location = new System.Drawing.Point(35, 188);
+            this.listBox_daystasks.Name = "listBox_daystasks";
+            this.listBox_daystasks.Size = new System.Drawing.Size(322, 225);
+            this.listBox_daystasks.TabIndex = 9;
+            this.listBox_daystasks.SelectedIndexChanged += new System.EventHandler(this.listBox_daystasks_SelectedIndexChanged);
             // 
             // label_date
             // 
@@ -331,5 +357,7 @@
         private System.Windows.Forms.Label label_date;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_addtask;
+        private System.Windows.Forms.ListBox listBox_daystasks;
+        private System.Windows.Forms.Label label4;
     }
 }
